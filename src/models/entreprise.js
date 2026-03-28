@@ -1,7 +1,7 @@
 const {Sequelize, DataTypes} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    const entreprise = sequelize.define('Entreprise', {
+    const entreprise = sequelize.define('entreprise', {
         id_entreprise: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         top_entreprise: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: false
+            defaultValue: 0
         },
         seo_title: {
             type: DataTypes.STRING,

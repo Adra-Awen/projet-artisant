@@ -204,34 +204,9 @@ img.logo {
   font-style: normal;
   display: inline-block;
   padding: 15px 30px;
-  margin-bottom: 50px;
-  border-radius: 0;
-}
-
-
-.steps-header h2 {
-  margin: 0;
-  color: rgb(255, 255, 255);
-  font-size: 2.1rem;
-  font-family: 'Graphik', sans-serif !important;
-  font-weight: bold !important;
-}
-
-.step-number {
-  font-size: 3.5rem; 
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 20px;
-}
-
-.step-image-box{
-  background-color: white;
-  padding: 0;
-  height: 200px;
-  display: flex;
+  margin-bottom: 50px; 
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .step-image-box img {

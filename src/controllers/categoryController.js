@@ -1,17 +1,14 @@
 const { category, entreprise, speciality } = require('../models/index');
 
-exports.getAllCategories = async (req, res) => {
+exports.getAllCategories = async () => {
     try {
-        const list = await category.findAll();
-        res.render('category', {
-            title: 'Toutes les catégories',
-            categories: list,
-            category : {nom: 'Toutes les catégories'},
-            entreprises: []
-            });
+        const categories = await category.findAll({
+            order: [['nom', 'ASC']]
+        });
+        return categories;
     } catch (error) {
-        console.error('Erreur lors de la récupération des catégories :', error);
-        res.status(500).json({ error: 'Une erreur est survenue lors de la récupération des catégories.' });
+        console.error("Erreur lors de la récupération des catégories :", error);
+        throw error;
     }
 };
 
