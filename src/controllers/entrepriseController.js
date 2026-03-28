@@ -58,3 +58,18 @@ exports.sendContactEmail = async (req, res) => {
         res.status(500).json({ error: 'Une erreur est survenue lors de l\'envoi du message de contact.' });   
     }
 };
+
+exports.getTopEntreprises = async () => {
+    try {
+        const results = await entreprise.findAll({
+            where: { top_entreprise: 1 },
+            limit: 3,
+            include: [{ model: speciality }]  
+        });
+        return results;
+
+    } catch (error) {
+        console.error('Erreur lors de la récupération des top entreprises :', error);
+        throw new Error('Une erreur est survenue lors de la récupération des top entreprises.');
+    } 
+};

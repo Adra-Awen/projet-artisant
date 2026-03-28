@@ -4,8 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const indexRouter = require('./src/routes/index');
 const categoriesRouter = require('./src/routes/categoryRoutes');
 const specialitiesRouter = require('./src/routes/specialityRoutes');
 const entreprisesRouter = require('./src/routes/entrepriseRoutes');
@@ -48,12 +47,8 @@ app.use(async (req, res, next) => {
         next(err);
     }
 });
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
 
 // Routes
-app.use('/users', usersRouter);
 app.use('/categories', categoriesRouter);
 app.use('/specialites', specialitiesRouter);
 app.use('/entreprises', entreprisesRouter);
