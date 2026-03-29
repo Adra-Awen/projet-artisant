@@ -4,7 +4,7 @@ block content
   .row.mt-4
     .col-md-6
       h1 #{entreprise.nom}
-      h4.text-muted #{entreprise.specialite} - #{entreprise.ville}
+      p.text-muted #{entreprise.speciality ? entreprise.speciality.nom : 'Artisan'} - #{entreprise.ville}      
       p.mt-4 #{entreprise.description}
       p
         strong Email : 
@@ -14,14 +14,14 @@ block content
         a(href=entreprise.web target="_blank") #{entreprise.web}
 
     .col-md-6.bg-light.p-4.rounded
-      h3 Contacter l'artisan
+      h2 Contacter l'artisan
       form(action='/entreprises/' + entreprise.id_entreprise + '/contact' method="POST")
         .col.mb-3
           label Nom
           input.form-control(name="nom" required)
         .col.mb-3
           label Prénom
-            input.form-control(name="prenom" required)
+          input.form-control(name="prenom" required)
         .mb-3
           label Email
           input.form-control(type="email" name="email" required)
