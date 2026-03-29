@@ -14,7 +14,7 @@ exports.getEntrepriseById = async (req, res) => {
     try {
         const { id } = req.params;
         const result = await entreprise.findByPk(id, {
-            include: [{model: speciality}]
+            include: [{model: speciality, as: 'speciality'}]
         });
 
         if (!result) {
@@ -64,9 +64,21 @@ exports.getTopEntreprises = async () => {
         const results = await entreprise.findAll({
             where: { top_entreprise: 1 },
             limit: 3,
-            include: [{ model: speciality }]  
+            include: [{ model: speciality, as: 'speciality' }]
         });
-        return results;
+        const entreprisesWithRatings = results.map(ent => {
+            const note = parseFloat(ent.note) || 0;
+            const fullStars = Math.floor(note);
+            const hasHalfStars = (note - fullStars) >= 0.5;
+            const emptyStars = 5 - fullStars - (hasHalfStars ? 1 : 0);
+            return {
+                ...ent.toJSON(),
+                fullStars: Array(fullStars).fill('full'),
+                halfStars: hasHalfStars ? ['half'] : [],
+                emptyStars: Array(emptyStars).fill('empty')
+            };
+        })
+        return entreprisesWithRatings;
 
     } catch (error) {
         console.error('Erreur lors de la récupération des top entreprises :', error);

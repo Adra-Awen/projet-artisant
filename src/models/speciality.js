@@ -1,7 +1,7 @@
 // const {Sequelize, DataTypes} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    const Speciality = sequelize.define('Speciality', {
+    const speciality = sequelize.define('speciality', {
         id_specialite: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -22,5 +22,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
-    return Speciality;
+    return speciality;
 };

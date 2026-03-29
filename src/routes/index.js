@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../models');
+const Entreprise = db.entreprise;
+const Speciality = db.speciality;
 
 const categoryRoutes = require('./categoryRoutes');
 const specialityRoutes = require('./specialityRoutes');
@@ -12,7 +15,6 @@ router.get('/', async (req, res, next) => {
     try {
         const categories = await categoryController.getAllCategories();
         const topEntreprises = await entrepriseController.getTopEntreprises();
-        console.log("CONTENU DE TOPENTREPRISES :", topEntreprises);
         res.render('index', {
             title: 'Accueil',
             categories,
@@ -22,6 +24,9 @@ router.get('/', async (req, res, next) => {
         next(error);
     }
 });
+
+router.get('/entreprise/:id', entrepriseController.getEntrepriseById);
+
 router.use('/categories', categoryRoutes);
 router.use('/specialities', specialityRoutes);
 router.use('/entreprises', entrepriseRoutes);

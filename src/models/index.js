@@ -11,8 +11,8 @@ const contact = require('./contact')(sequelize, DataTypes);
 category.hasMany(speciality, { foreignKey: 'id_categorie' });
 speciality.belongsTo(category, { foreignKey: 'id_categorie' });
 
-speciality.hasMany(entreprise, { foreignKey: 'id_specialite' });
-entreprise.belongsTo(speciality, { foreignKey: 'id_specialite' });
+speciality.hasMany(entreprise, { foreignKey: 'id_specialite', as: 'entreprises' });
+entreprise.belongsTo(speciality, { foreignKey: 'id_specialite', as: 'speciality' });
 
 entreprise.hasOne(contact, { foreignKey: 'id_entreprise' });
 contact.belongsTo(entreprise, { foreignKey: 'id_entreprise' });
