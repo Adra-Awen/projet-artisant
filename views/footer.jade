@@ -1,15 +1,16 @@
-extends layout
-
-footer.bg-dark.text-white.mt-5.py-4
+footer.site-footer
   .container
-    .row
-      .col-md-6
+    .footer.row
+      .footer-logo-col
+        img.footer-logo(src="/images/Logo.png" alt="Logo")
+      .footer-address
         h5 Trouve ton artisan !
         p 101 cours Charlemagne
         p 69269 LYON CEDEX 02
         p France
         p +33 (0)4 26 73 40 00
-      .col-md-6.text-md-end
-        a.text-white.me-3(href="/mentions") Mentions légales
-        a.text-white.me-3(href="/donnees") Données personnelles
-        a.text-white(href="/cookies") Cookies
+      .footer-links
+        a(href="/mentions") Mentions légales
+        a(href="/donnees") Données personnelles
+        a(href="/accessibilite") Accessibilité
+        a(href="/cookies") Cookies
