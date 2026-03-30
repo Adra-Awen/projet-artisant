@@ -1,4 +1,4 @@
-const { entreprise, speciality, contact } = require('../models/index');
+const { entreprise, speciality, contact, category } = require('../models/index');
 
 exports.getAllEntreprises = async (req, res) => {
     try {
@@ -14,7 +14,7 @@ exports.getEntrepriseById = async (req, res) => {
     try {
         const { id } = req.params;
         const result = await entreprise.findByPk(id, {
-            include: [{model: speciality, as: 'speciality'}]
+            include: [{model: speciality, as: 'speciality', include: [{ model: category, as: 'category' }] }],
         });
 
         if (!result) {
@@ -23,7 +23,8 @@ exports.getEntrepriseById = async (req, res) => {
 
         res.render('entreprise', {
             title: result.nom,
-            entreprise: result
+            entreprise: result,
+            category: result.speciality ? result.speciality.category : null
         });
     } catch (error) {
         console.error('Erreur lors de la récupération de l\'entreprise :', error);
