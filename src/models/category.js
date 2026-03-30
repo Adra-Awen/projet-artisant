@@ -1,7 +1,7 @@
 const {Sequelize, DataTypes} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    const Category = sequelize.define('Category', {
+    const category = sequelize.define('category', {
         id_categorie: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -18,5 +18,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
-    return Category;
+    return category;
 };

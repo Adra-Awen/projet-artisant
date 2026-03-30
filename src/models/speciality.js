@@ -22,5 +22,13 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
+    speciality.associate = (models) => {
+        speciality.belongsTo(models.category, {
+            foreignKey: 'id_categorie',
+            as: 'category'
+        });
+    };
+
+
     return speciality;
 };

@@ -1,7 +1,7 @@
 const {Sequelize, DataTypes} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    const Contact = sequelize.define('Contact', {
+    const contact = sequelize.define('contact', {
         id_contact: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -29,5 +29,5 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
         timestamps: false
     });
-    return Contact;
+    return contact;
 };
