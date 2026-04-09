@@ -10,8 +10,6 @@ const specialitiesRouter = require('./src/routes/specialityRoutes');
 const entreprisesRouter = require('./src/routes/entrepriseRoutes');
 // const contactRouter = require('./src/routes/contactRoutes');
 
-const { category } = require('./src/models');
-
 const app = express();
 
 // DATABASE CONNECTION
