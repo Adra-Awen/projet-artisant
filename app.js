@@ -15,10 +15,14 @@ const { category } = require('./src/models');
 const app = express();
 
 // DATABASE CONNECTION
-const { sequelize } = require('./src/models');
+const { sequelize, category, entreprise, speciality, contact } = require('./src/models');
 sequelize.authenticate()
     .then(() => {
         console.log('Base de données connectée avec succès.');
+        return sequelize.sync({alter:true});
+    })
+    .then (() => {
+        console.log('Modèles synchronisés avec la base de données.');
     })
     .catch(err => {
         console.error('Impossible de se connecter à la base de données:', err);
